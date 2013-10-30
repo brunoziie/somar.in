@@ -6,7 +6,8 @@ APP = {
 	},
 
 	events: function () {
-		var $doc = $(document),
+		var that = this,
+			$doc = $(document),
 			$display = $('#valueInput');
 
 		$doc.on('tap', '.digit', function (e) {
@@ -15,11 +16,21 @@ APP = {
 
 			$display.val(displayValue + value);
 		});
+
+		$doc.on('tap', '#clear', function () {
+			$display.val('');
+		});
+
+		$doc.on('tap', '#sum', function () {
+			var res = that.sum($display.val());
+			$display.val(res);
+		});
 	},
 
 	sum: function (string) {
-		var value = 0,
-			parts = string.split('+'),
+		var tratedString = string.replace(/(^\+|\+$)/g, ''),
+			value = 0,
+			parts = tratedString.split('+'),
 			len = parts.length,
 			i;
 

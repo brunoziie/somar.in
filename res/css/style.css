@@ -1,10 +1,7 @@
 *{font-family: 'sans-serif'; font-weight: 300;}
-#container h1{width: 600px;font-size: 325%; margin: 0 auto;}
+#container{margin: 0 5%;}
+#container h1{font-size: 325%; margin: 0 auto;}
 #valueInput{font-size: 325%; margin:4% 0.5%; width: 99%}
 
 #buttons .button-item input {width: 96%; margin: 0 2%; margin-bottom: 4%}
-
-
-
-
 .pure-button-xlarge {font-size: 225%; }
