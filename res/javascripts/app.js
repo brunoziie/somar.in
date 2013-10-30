@@ -40,9 +40,7 @@ APP = {
 
 		return value;
 	}
-
 };
-
 
 $(window).on('load', function (e) {
 	APP.setup();
