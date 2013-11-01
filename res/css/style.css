@@ -1,7 +1,8 @@
 *{font-family: 'sans-serif'; font-weight: 300;}
 #container{margin: 0 5%;}
 #container h1{font-size: 325%; margin: 0 auto;}
-#valueInput{font-size: 325%; margin:4% 0.5%; width: 99%}
+#valueInput{font-size: 325%; margin:4% 2% 4% 0; width: 98%}
 
-#buttons .button-item input {width: 96%; margin: 0 2%; margin-bottom: 4%}
-.pure-button-xlarge {font-size: 225%; }
+#buttons .button-item input {width: 96%; margin: 0 2%; margin-bottom: 5%}
+.pure-button-xlarge {font-size: 200%; }
+.pure-button-success {background: rgb(28, 184, 65); color: white}

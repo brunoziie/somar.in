@@ -1,82 +1,141 @@
-<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>Somar</title>
-	<link rel="stylesheet" type="text/css" href="res/fonts/fonts.css">
-	<link rel="stylesheet" type="text/css" href="res/css/pure-min.css">
-	<link rel="stylesheet" type="text/css" href="res/css/style.css">
-</head>
-<body>
-	<section id="container">
-		<h1>SOMAR</h1>
-		<form class="pure-form">
-			<div id="display" class="pure-g">
-				<div class="pure-u-1">
-					<input id="valueInput" type="text" value="" readonly />
-				</div>
+	<meta charset="utf-8">
+	<title>somar.in</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="description">
+	<meta content="" name="author">
+
+	<!-- Le styles -->
+	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+	<style type="text/css">
+		body {
+			padding-top: 20px;
+			padding-bottom: 40px;
+		}
+
+		/* Custom container */
+		.container-narrow {
+			margin: 0 auto;
+			max-width: 700px;
+		}
+		.container-narrow &gt; hr {
+			margin: 30px 0;
+		}
+
+		/* Main marketing message and sign up button */
+		.jumbotron {
+			margin: 60px 0;
+			text-align: center;
+		}
+		.jumbotron h1 {
+			font-size: 72px;
+			line-height: 1;
+		}
+		.jumbotron .btn {
+			font-size: 21px;
+			padding: 14px 24px;
+		}
+
+		/* Supporting marketing content */
+		.marketing {
+			margin: 60px 0;
+		}
+		.marketing p + h4 {
+			margin-top: 28px;
+		}
+
+		.large-input-text {
+			font-size: 25px;
+    		padding: 7px 7px;
+    	}
+
+    	.large-text {
+    		font-size: 24.5px;
+			font-weight: bold;
+    	}
+
+    	#result{
+			font-size: 90px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 100px;
+			min-height: 100px
+    	}
+
+	</style>
+	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="../assets/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+    <!-- Button to trigger modal -->
+		
+		 
+		<!-- Modal -->
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Resultado</h3>
 			</div>
-			<div id="buttons" class="pure-g">
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="1" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="2" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="3" data-role="none">
-				</div>
-				
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="4" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="5" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="6" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="7" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="8" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="9" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input id="clear" type="button" class="pure-button pure-button-primary pure-button-xlarge" value="C" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="0" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-3">
-					<input type="button" class="pure-button pure-button-primary pure-button-xlarge digit" value="+" data-role="none">
-				</div>
-
-				<div class="button-item pure-u-1-6"></div>
-				<div class="button-item pure-u-4-6">
-					<input type="button" id="sum" class="pure-button pure-button-primary pure-button-xlarge" value="Somar!" data-role="none">
-				</div>
-				<div class="button-item pure-u-1-6"></div>
+			<div class="modal-body">
+				<p id="result">0</p>
 			</div>
-		</form>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
+				<button id="share" class="btn btn-primary">Compartilhar</button>
+			</div>
+		</div>
 
-	</section>
-	<script type="text/javascript" src="res/javascripts/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="res/javascripts/jquery.mobile-1.3.2.min.js"></script>
-	<script type="text/javascript" src="res/javascripts/app.js"></script>
-</body>
+		<div class="container-narrow">
+			<div class="masthead">
+				<h3 class="muted">somar.in</h3>
+			</div>
+			<hr>
+			<div class="jumbotron">
+				<h1>Somar nunca<br>  foi tão fácil.</h1>
+				<br>
+				<input id="value1" type="" class="large-input-text"><span class="large-text" style="color:#666"> + </span>
+				<input id="value2" type="" class="large-input-text">&nbsp;
+				<a href="#" class="btn btn-large btn-success" id="sum">SOMAR</a>
+			</div>
+			<hr>
+			<hr>
+			<div class="footer">
+				<p>powered by <a href="#">FendaDoBiquine</a></p>
+			</div>
+		</div> <!-- /container -->
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="res/javascripts/jquery-1.9.1.min.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+		<script type="text/javascript" src="res/javascripts/app.js"></script>
+		<script type="text/javascript">
+			window.fbAsyncInit = function() {
+				// init the FB JS SDK
+				FB.init({
+					appId      : '1402655803304383',                   // App ID from the app dashboard
+					channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
+					status     : true,                                 // Check Facebook Login status
+					xfbml      : true                                  // Look for social plugins on the page
+				});
+
+				// Additional initialization code such as adding Event Listeners goes here
+			};
+
+			// Load the SDK asynchronously
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+	</body>
 </html>
