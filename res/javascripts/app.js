@@ -26,9 +26,16 @@ APP = {
 		$doc.on('click', '#sum', function () {
 			var val1 = $('#value1').val(),
 				val2 = $('#value2').val(),
+				regex = /[0-9]+/,
 				sum;
 
 			if (val1 != '' && val2 != '') {
+
+				if (!regex.text(val1) || !regex.text(val2)) {
+					alert('Você não sabe o que é um numero?');
+					return false;
+				}
+
 				sum = that.sum();
 				that._facebookText = val1 + '+' + val2 + '' + '=' + sum;
 
