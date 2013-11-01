@@ -12,13 +12,6 @@ APP = {
 			$doc = $(document),
 			$display = $('#valueInput');
 
-		$doc.on('tap', '.digit', function (e) {
-			var displayValue = $display.val(),
-				value = this.value;
-
-			$display.val(displayValue + value);
-		});
-
 		$doc.on('click', '#share', function () {
 			that.facebookPost(that._facebookText);
 		});
@@ -37,9 +30,11 @@ APP = {
 				}
 
 				sum = that.sum();
-				that._facebookText = val1 + '+' + val2 + '' + '=' + sum;
+				that._facebookText = val1 + '+' + val2 + '' + '=' + sum.result;
 
-				$('#result').text(that.sum());
+				$('#result').text(sum.result);
+				$('#message').text(sum.message);
+
 				$('#myModal').modal('show');
 				$('#value1, #value2').val('');
 			} else {
@@ -60,10 +55,13 @@ APP = {
 	},
 
 	sum: function (string) {
-		var val1 = $('#value1').val(),
-			val2 = $('#value2').val();
+		var val1 = parseInt($('#value1').val(), 10),
+			val2 = parseInt($('#value2').val(), 10);
 
-		return parseInt(val1, 10) + parseInt(val2, 10);
+		return {
+			result: (val1 + val2),
+			message: APP.Sentences.getSentence(val1, val2)
+		}
 	}
 };
 

@@ -4,7 +4,6 @@
 	<title>somar.in</title>
 	<!--[if IE]><link rel="shortcut icon" href="favicon.ico"><![endif]-->
     <link rel="icon" href="res/images/16.png">
-
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<meta content="Somar nunca foi tão facil" name="description">
 	<meta content="Bruno Ziiê, Victor Sá, Rafael de Castro, Caique Patrick" name="author">
@@ -16,141 +15,90 @@
 	<meta property="og:description" content="Somar nunca foi tão facil"/>
 	<!-- Le styles -->
 	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
+
 	<style type="text/css">
-		body {
-			padding-top: 20px;
-			padding-bottom: 40px;
-		}
+		body {padding-top: 20px; padding-bottom: 40px; }
+		input, .footer p{text-align: center}
+
+		.modal-header {border-bottom: 0px!important}
+		.modal.fade.in {top: 29%!important;}
 
 		/* Custom container */
-		.container-narrow {
-			margin: 0 auto;
-			max-width: 700px;
-		}
-		.container-narrow &gt; hr {
-			margin: 30px 0;
-		}
+		.container-narrow {margin: 0 auto; max-width: 700px; }
+		.container-narrow &gt; hr {margin: 30px 0; }
 
 		/* Main marketing message and sign up button */
-		.jumbotron {
-			margin: 60px 0;
-			text-align: center;
-		}
-		.jumbotron h1 {
-			font-size: 72px;
-			line-height: 1;
-		}
-		.jumbotron .btn {
-			font-size: 21px;
-			padding: 14px 24px;
-		}
+		.jumbotron {margin: 60px 0; text-align: center; }
+		.jumbotron h1 {font-size: 72px; line-height: 1; }
+		.jumbotron .btn {font-size: 21px; padding: 14px 24px; }
 
 		/* Supporting marketing content */
-		.marketing {
-			margin: 60px 0;
-		}
-		.marketing p + h4 {
-			margin-top: 28px;
-		}
+		.marketing {margin: 60px 0; }
+		.marketing p + h4 {margin-top: 28px; }
 
-		.large-input-text {
-			font-size: 25px;
-    		padding: 7px 7px;
-    	}
-
-    	.large-text {
-    		font-size: 24.5px;
-			font-weight: bold;
-    	}
-
-    	#result{
-			font-size: 90px;
-			font-weight: bold;
-			text-align: center;
-			line-height: 100px;
-			min-height: 100px
-    	}
-
+		.large-input-text {font-size: 25px!important; padding: 7px!important; height: 50px!important; line-height: 50px;margin-bottom: 0}
+    	.large-text {font-size: 25px; font-weight: bold; }
+    	
+    	#sum {vertical-align: top;padding: 7px 14px!important; height: 50px!important; line-height: 50px;margin-bottom: 0}
+    	#result{font-size: 90px; font-weight: bold; text-align: center; line-height: 100px; min-height: 100px}
+    	#message{font-size: 16px; font-weight: bold; text-align: center; line-height: 20px; min-height: 20px}
 	</style>
-	<link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
-		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-		<script src="../assets/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+	<!--[if lt IE 9]>
+	<script src="../assets/js/html5shiv.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div id="fb-root"></div>
 
-	<body>
-    <!-- Button to trigger modal -->
-		
-		 
-		<!-- Modal -->
-		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Resultado</h3>
-			</div>
-			<div class="modal-body">
-				<p id="result">0</p>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Fechar</button>
-				<!-- <button id="share" class="btn btn-primary">Compartilhar</button> -->
-			</div>
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel"></h3>
 		</div>
+		<div class="modal-body">
+			<p id="result">0</p>
+			<p id="message"></p>
+		</div>
+	</div>
 
-		<div class="container-narrow">
-			<div class="masthead">
-				<h3 class="muted">somar.in</h3>
-			</div>
-			<hr>
-			<div class="jumbotron">
-				<h1>Somar nunca<br>  foi tão fácil.</h1>
-				<br>
-				<input id="value1" type="" class="large-input-text"><span class="large-text" style="color:#666"> + </span>
-				<input id="value2" type="" class="large-input-text">&nbsp;
-				<a href="#" class="btn btn-large btn-success" id="sum">SOMAR</a>
-			</div>
-			<hr>
+	<div class="container-narrow">
+		<div class="jumbotron">
+			<h1>Somar nunca<br> foi tão fácil.</h1>
+			<br>
+			<br>
+			<input id="value1" type="text" class="large-input-text" /><span class="large-text" style="color:#666"> + </span>
+			<input id="value2" type="text" class="large-input-text" />&nbsp;
+			<input type="button" class="btn btn-large btn-success" id="sum" value="SOMAR">
+		</div>
+		<hr>
+		<div style="padding: 0 150px">
+			<div class="fb-like" data-href="http://www.somar.in/" data-width="400" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
+		</div>
+		<hr>
+		<div class="footer">
+			<p>powered by <a href="#"><b>FendaDoBiquine</b></a></p>
+		</div>
+	</div>
 
-			<div style="padding: 0 25%">
-				<div class="fb-like" data-href="http://www.somar.in/" data-width="100%" data-colorscheme="light" data-layout="standard" data-action="like" data-show-faces="true" data-send="false"></div>
-			</div>
-			<hr>
-			<div class="footer">
-				<p>powered by <a href="#">FendaDoBiquine</a></p>
-			</div>
-		</div> <!-- /container -->
-		<div id="fb-root"></div>
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="res/javascripts/jquery-1.9.1.min.js"></script>
+	<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="res/javascripts/app.js"></script>
+	<script type="text/javascript" src="res/javascripts/app.sentences.js"></script>
+	<script type="text/javascript">
+		// Load the SDK asynchronously
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=1402655803304383";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
 
-		<!-- Le javascript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script type="text/javascript" src="res/javascripts/jquery-1.9.1.min.js"></script>
-		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
-		<script type="text/javascript" src="res/javascripts/app.js"></script>
-		<script type="text/javascript">
-			window.fbAsyncInit = function() {
-				// init the FB JS SDK
-				FB.init({
-					appId      : '1402655803304383',                   // App ID from the app dashboard
-					channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel file for x-domain comms
-					status     : true,                                 // Check Facebook Login status
-					xfbml      : true                                  // Look for social plugins on the page
-				});
-
-				// Additional initialization code such as adding Event Listeners goes here
-			};
-
-			// Load the SDK asynchronously
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=1402655803304383";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-45371539-3', 'somar.in'); ga('send', 'pageview');
-		</script>
-	</body>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-45371539-3', 'somar.in'); ga('send', 'pageview');
+	</script>
+</body>
 </html>
