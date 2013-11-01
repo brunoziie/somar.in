@@ -31,7 +31,7 @@ APP = {
 
 			if (val1 != '' && val2 != '') {
 
-				if (!regex.text(val1) || !regex.text(val2)) {
+				if (!regex.test(val1) || !regex.test(val2)) {
 					alert('Você não sabe o que é um numero?');
 					return false;
 				}
