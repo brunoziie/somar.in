@@ -8,6 +8,10 @@ APP.Sentences = {
 		if (result > (9999 * 9999)) {
 			return this.data.bignum;
 		}
+		if (result > 2 && result < 10) {
+			return this.data.tinynum;
+		}
+
 
 		if ((v1 == 0 || v2 == 0) && v1 != v2) {
 			return this.data.sumWithZero;
@@ -17,6 +21,7 @@ APP.Sentences = {
 	},
 
 	data: {
+		'tinynum': 'Vamos lá, me desafie, posso fazer cálculos maiores que isso.',
 		'bignum': 'Acho que você não conseguiria calcular isso só',
 		'sumWithZero': 'Sério que você quer somar zero a um número?',
 		'0+0': 'Você realmente precisa de um aplicativo para somar 0+0?',
